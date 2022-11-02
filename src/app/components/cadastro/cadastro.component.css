@@ -1,0 +1,19 @@
+mat-card{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content{
+    width: 80%;
+}
+
+.botao{
+    text-align: center;
+
+}
+.botao button{
+    margin-left: 25px;
+}

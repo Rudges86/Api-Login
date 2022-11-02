@@ -1,0 +1,72 @@
+<mat-card>
+    <mat-card-title>
+        Cadastro
+    </mat-card-title>
+    <mat-card-content class="content">
+        <form action="" [formGroup]="cadastro" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="tex" class="form-control" id="nome" formControlName="name" [ngClass]="{
+                        'is-valid': cadastro.controls['name'].valid && cadastro.controls['name'].touched,
+                        'is-invalid': cadastro.controls['name'].invalid && cadastro.controls['name'].touched
+                    }">
+                <div *ngIf="cadastro.controls['name'].hasError('required') && cadastro.controls['name'].touched"
+                    class="alert alert-danger">
+                    Insira o nome.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com"
+                    formControlName="email" [ngClass]="{
+                    'is-valid':cadastro.controls['email'].valid && cadastro.controls['email'].touched,
+                    'is-invalid': cadastro.controls['email'].invalid && cadastro.controls['email'].touched
+                }">
+                <div *ngIf="cadastro.controls['email'].hasError('required') && cadastro.controls['email'].touched"
+                    class="alert alert-danger">
+                    Email inválido
+                </div>
+            </div>
+            <div formGroupName="grupoSenhas">
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" formControlName="senha" [ngClass]="{
+                        'is-valid': cadastro.get('grupoSenhas.senha')?.valid && cadastro.get('grupoSenhas.senha')?.touched,
+                        'is-invalid':cadastro.get('grupoSenhas.senha')?.invalid && cadastro.get('grupoSenhas.senha')?.touched 
+                    }" minLength="8">
+
+                    <div
+                        *ngIf="cadastro.get('grupoSenhas.senha')?.touched && cadastro.get('grupoSenhas.senha')?.hasError('pattern')">
+                        Enter a valid password: <br>
+                        - Must have at least 8 characters; <br>
+                        - Must contain only alphanumeric characters <br>
+                        - Must have at least one special character <br>
+                        - Must have at least one uppercase character <br>
+                        - Must have at least one lowercase character <br>
+                    </div>
+                    <div
+                        *ngIf="cadastro.get('grupoSenhas.senha')?.hasError('required') && cadastro.get('grupoSenhas.senha')?.touched">
+                        Campo obrigatório
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmeSenha" class="form-label">Confirme a Senha</label>
+                    <input type="password" class="form-control" id="confirmeSenha" formControlName="confirmSenha"
+                        [ngClass]="{
+                            'is-valid':cadastro.get('grupoSenhas.confirmSenha')?.valid && cadastro.get('grupoSenhas.confirmSenha')?.touched,
+                            'is-invalid':cadastro.get('grupoSenhas.confirmSenha')?.invalid && cadastro.get('grupoSenhas.confirmSenha')?.touched
+                        }">
+                    <div
+                        *ngIf="cadastro.get('grupoSenhas.confirmeSenha')?.hasError('required') &&  cadastro.get('grupoSenhas.confirmSenha')?.valid">
+                        Senha diferente
+                    </div>
+                </div>
+            </div>
+
+            <div class="botao">
+                <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+                <button mat-raised-button routerLink="/login" type="button">Cancelar</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
