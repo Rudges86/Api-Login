@@ -1,0 +1,27 @@
+<mat-toolbar class="mat-elevation-z8 tollbar">
+    <h1>Bem vindo </h1>
+    <div>
+        <button mat-button [matMenuTriggerFor]="meuMenu">Adicionar</button>
+        <mat-menu #meuMenu="matMenu" yPosition="above">
+            <button mat-menu-item>Atualizar</button>
+            <button mat-menu-item>Cadastrar novo</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="belowMenu">Star wars</button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+            <button mat-menu-item>Filmes</button>
+            <button mat-menu-item>Buscar Filme</button>
+            <button mat-menu-item>Informações de filmes</button>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="belowMenu">Pokémon</button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+            <button mat-menu-item>Pokedex</button>
+            <button mat-menu-item>buscar pokemon</button>
+        </mat-menu>
+
+    </div>
+    <div class="profile">
+       <mat-icon class="v-midle">person </mat-icon>
+       <a href="">Profile</a>
+    </div>
+</mat-toolbar>

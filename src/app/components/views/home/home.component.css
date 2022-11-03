@@ -1,0 +1,13 @@
+.tollbar{
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 50px;
+}
+
+.profile a{
+    text-decoration: none;
+}
+.v-midle{
+    margin-right: 15px ;
+}
